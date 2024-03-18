@@ -1,0 +1,25 @@
+Step 1: Create and Activate Virtual Environments, Install Dependencies
+
+python -m venv ai_app
+ai_app/Scripts/activate
+
+pip install transformers torch Pillow
+
+Note1: You can use python functions for your convenience but put the model outside of the function. The reason for this is that for each request or inference you need to reload te model and that is computationally intensive. So, keep the model out of the function which will run the model only once and not evry time.
+
+Note2: You can highlight the code lines and use the shift +ctrl +P in order to run those selected lines in the jupyter notebook. So, you do not have to open the jUpyter notebook every single time. You can run thi thing simultaneously with you main file.
+
+Note3: to run the FastAPI app, you can use the command called "uvicorn main:app --reload"
+
+
+Step 2: write the code for model, main.py. Run the code using command given above, and try it on localhhost. 
+you can try it by using "http://127.0.0.1:8000/docs"
+
+
+step 3: Dockerize it.
+
+docker init
+yes yes uvicorn main:app --reload --port 8000 --host 0.0.0.0
+docker compose up --build (make sure docker engine is turned on)
+
+Your dockerized app is running on the localhost.
